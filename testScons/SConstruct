@@ -1,0 +1,36 @@
+import os
+
+BuildDir('build','src',
+env = Environment()
+
+def RGlob(pattern):
+        (directory, pattern) = os.path.split(pattern)
+	print 'RGlob dir=' , directory ,"pat=", pattern
+        result = []
+	for file in os.listdir(directory):
+		print 'dir=',directory,'file=',file
+		if file.endswith('.cpp'):
+			result.append(os.path.join(directory,file))
+		if os.path.isdir(os.path.join(directory,file)):
+			innerResults = RGlob(os.path.join(directory,file,pattern))
+			result.extend( innerResults)
+        return result
+
+srcs = RGlob('src/*.cpp')
+print '------------------------' ,srcs
+hello = env.Program(target = 'helloworld', source = srcs ) #["obj/main.cpp"])
+
+
+
+
+print 	'TYPE - ENV - ',type(env)  # type - return the type of varibale
+#print '11111-', env.GetLaunchDir()
+#print 'def', env.Configure(self, args, kw)
+#print help(env) ,
+  # dir - return the all funcition of var (hello)
+
+
+
+
+
+
