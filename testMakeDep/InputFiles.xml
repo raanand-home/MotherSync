@@ -1,0 +1,9 @@
+
+<project_dir> projectName = test
+    <src_dir>src</src_dir>
+    <src_dir>src/src1</src_dir>
+    <inc_dir>inc</inc_dir>
+    <dep_dir>dep</dep_dir>
+    <exec_dir>exe</exec_dir>
+    <make_inc_file>input_test.mk</make_inc_file>
+</project_dir>
