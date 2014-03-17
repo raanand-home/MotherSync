@@ -3,3 +3,7 @@ testScons/obj/*
 *~
 testScons/helloworld
 /testScons/.sconsign.dblite
+/testMakeDep/dep/*
+/testMakeDep/obj/*
+
+
