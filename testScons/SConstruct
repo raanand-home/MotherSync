@@ -14,11 +14,23 @@ def RGlob(pattern):
 		if os.path.isdir(os.path.join(directory,file)):
 			innerResults = RGlob(os.path.join(directory,file,pattern))
 			result.extend( innerResults)
-        return result
+        return result;
+
+def ChangeFirstDir(srcs):
+	out = []
+	for x in srcs:
+		value = x.split('/')
+		value[0] = 'obj'
+		l = os.path.join(*value)
+		print "----------------------",l,"----------------------"
+		out.append(os.path.join(*value))
+	return out
 
 srcs = RGlob('src/*.cpp')
 print '------------------------' ,srcs
-hello = env.Program(target = 'helloworld', source = srcs )
+VariantDir('obj','src')
+srcs = ChangeFirstDir(srcs)
+hello = env.Program(target = 'helloworld', source = srcs)
 
 
 

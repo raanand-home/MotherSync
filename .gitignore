@@ -1,2 +1,5 @@
-testScons\obj\*
+testScons/obj/*
 *.*~
+*~
+testScons/helloworld
+/testScons/.sconsign.dblite
