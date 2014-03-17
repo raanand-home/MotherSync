@@ -1,6 +1,6 @@
 import os
 
-BuildDir('build','src',
+
 env = Environment()
 
 def RGlob(pattern):
@@ -18,12 +18,12 @@ def RGlob(pattern):
 
 srcs = RGlob('src/*.cpp')
 print '------------------------' ,srcs
-hello = env.Program(target = 'helloworld', source = srcs ) #["obj/main.cpp"])
+hello = env.Program(target = 'helloworld', source = srcs )
 
 
 
 
-print 	'TYPE - ENV - ',type(env)  # type - return the type of varibale
+#print 	'TYPE - ENV - ',type(env)  # type - return the type of varibale
 #print '11111-', env.GetLaunchDir()
 #print 'def', env.Configure(self, args, kw)
 #print help(env) ,
