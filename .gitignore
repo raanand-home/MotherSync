@@ -14,3 +14,5 @@ testScons/helloworld
 *.sdf
 CSharpTest/UnitTestProject1/bin/*
 *.user
+CSharpTest/UnitTestProject1/bin/Debug/UnitTestProject1.dll
+CSharpTest/UnitTestProject1/bin/Debug/UnitTestProject1.pdb
