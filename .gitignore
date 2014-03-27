@@ -10,3 +10,7 @@ testScons/helloworld
 /CSharpTest/ConsoleApplication1/Debug
 /CSharpTest/UnitTestProject1/bin
 /CSharpTest/UnitTestProject1/obj
+*.opensdf
+*.sdf
+CSharpTest/UnitTestProject1/bin/*
+*.user
