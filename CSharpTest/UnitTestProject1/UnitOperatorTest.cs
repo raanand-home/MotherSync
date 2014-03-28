@@ -26,10 +26,8 @@ namespace UnitTestProject1
         {
             return new NormalINT() { Value = (int)fahr.Real };
         }
-
-      
-
     }
+  
     [TestClass]
     public class UnitOperatorTest
     {

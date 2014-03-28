@@ -59,10 +59,17 @@
     <Compile Include="EnumAdvaced.cs" />
     <Compile Include="StructInitTest.cs" />
     <Compile Include="ConstructorTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="PropertiesClassTest.cs" />
     <Compile Include="IComparableTest.cs" />
     <Compile Include="TestDelegates.cs" />
-    <Compile Include="UnitTest3.cs" />
+    <Compile Include="IndexerTest.cs" />
+    <Compile Include="TestInharitence.cs" />
+    <Compile Include="PartialClass.cs" />
+    <Compile Include="GenericsTest.cs" />
+    <Compile Include="GenericConstrains.cs" />
+    <Compile Include="ExtentionMethod.cs" />
+    <Compile Include="GarbageC.cs" />
+    <Compile Include="DisposeTest.cs" />
     <Compile Include="UnitTestEvent.cs" />
     <Compile Include="YieldTest.cs" />
   </ItemGroup>

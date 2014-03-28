@@ -2,16 +2,32 @@
 //
 
 #include "stdafx.h"
+
+class B
+{
+public:
+	void DoSome()
+	{
+
+	}
+};
+
+template<typename T>
 class A
 {
 public:
-	int field;
+	T DoSome(T val)
+	{
+		val.DoSome();
+		return val;
+		
+	}
 };
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	A a;
-	auto b = &a;
-	return 0;
+	A<B> a;
+	B b;
+	a.DoSome(b);
 }
 
