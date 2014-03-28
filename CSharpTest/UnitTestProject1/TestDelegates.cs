@@ -12,6 +12,7 @@ namespace UnitTestProject1
         {
             Num++;
         }
+
         [TestMethod]
         public void TestDelegate()
         {
@@ -21,6 +22,7 @@ namespace UnitTestProject1
             {
                 Assert.Fail("this shouldn't happend");
             }
+
             //Assiment
             functionPointer = IncressNumber;
             
