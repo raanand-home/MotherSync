@@ -70,6 +70,7 @@
     <Compile Include="ExtentionMethod.cs" />
     <Compile Include="GarbageC.cs" />
     <Compile Include="DisposeTest.cs" />
+    <Compile Include="DisposePattern.cs" />
     <Compile Include="UnitTestEvent.cs" />
     <Compile Include="YieldTest.cs" />
   </ItemGroup>

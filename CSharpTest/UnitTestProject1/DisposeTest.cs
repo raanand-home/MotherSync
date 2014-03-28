@@ -18,6 +18,7 @@ namespace UnitTestProject1
                 VeryUageList.Clear();
             }
         }
+
         [TestMethod]
         public void UsingTest()
         {
@@ -32,6 +33,7 @@ namespace UnitTestProject1
                 a.Dispose();
             }
         }
+
         [TestMethod]
         public void UsingMyBigResourceUsingTest()
         {

@@ -29,9 +29,9 @@ namespace UnitTestProject1
         }
 
         // The internal dispose method.
-        private void Dispose(bool disposing)
+        private void Dispose(bool isDisposeInterfaceIsRunning)
         {
-            if (disposing)
+            if (isDisposeInterfaceIsRunning)
             {
                 // Clean up managed resources
                 _someManagedResource.Clear();
