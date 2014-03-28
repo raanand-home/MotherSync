@@ -18,3 +18,7 @@ CSharpTest/UnitTestProject1/bin/Debug/UnitTestProject1.dll
 CSharpTest/UnitTestProject1/bin/Debug/UnitTestProject1.pdb
 *.suo
 CSharpTest/UnitTestProject1/bin/Debug/UnitTestProject1.pdb
+*.exe
+*.ilk
+*.pdb
+*.pdb
