@@ -13,7 +13,7 @@ namespace UnitTestProject1
         }
     }
     [TestClass]
-    public class UnitTest2
+    public class IComparableTest
     {
         List<ACompare> l = new List<ACompare>();
         [TestMethod]

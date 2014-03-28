@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace UnitTestProject1
 {
@@ -27,12 +28,31 @@ namespace UnitTestProject1
              }
          }
          public event SalaryChange OnSalaryChanged;
+     }
 
+     class TelemetryArrived
+     {
+         List<Employee> list = new List<Employee>();
+         public void WatchEmploy(Employee a)
+         {
+             list.Add(a);
+             a.OnSalaryChanged+=a_OnSalaryChanged;
+         }
+         void Remove(Employee e)
+         {
+             list.Remove(e);
+         }
+
+         void a_OnSalaryChanged(int NewSalary)
+         {
+
+         }
      }
     
     [TestClass]
     public class UnitTestEvent
     {
+
         [TestMethod]
         public void EventTesting()
         {
@@ -48,5 +68,9 @@ namespace UnitTestProject1
         {
             newSalary = NewSalary;
         }
+
+
+        
+        
     }
 }
