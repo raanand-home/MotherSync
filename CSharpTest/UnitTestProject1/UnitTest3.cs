@@ -45,8 +45,8 @@ namespace UnitTestProject1
         public void IndexerTestMethod()
         {
             EmployCollection empC = new EmployCollection();
-            Employee emp = empC["Ruth"];
-            empC["shoky "] = new Employee();
+            //Employee emp = empC["Ruth"];
+            //empC["shoky "] = new Employee();
         }
     }
 }

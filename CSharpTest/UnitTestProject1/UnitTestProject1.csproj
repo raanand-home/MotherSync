@@ -60,7 +60,7 @@
     <Compile Include="StructInitTest.cs" />
     <Compile Include="ConstructorTest.cs" />
     <Compile Include="UnitTest1.cs" />
-    <Compile Include="UnitTest2.cs" />
+    <Compile Include="IComparableTest.cs" />
     <Compile Include="TestDelegates.cs" />
     <Compile Include="UnitTest3.cs" />
     <Compile Include="UnitTestEvent.cs" />
