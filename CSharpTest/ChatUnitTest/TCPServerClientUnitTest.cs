@@ -22,7 +22,7 @@ namespace ChatUnitTest
             
             // Create Client
             // Connect Client To Server
-            // Send Message To Server
+            // Send Message ToServer
             // Close
         }
 
