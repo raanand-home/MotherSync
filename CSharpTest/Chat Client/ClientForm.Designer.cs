@@ -45,6 +45,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -87,7 +88,6 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(435, 238);
             this.listBox2.TabIndex = 6;
-            
             // 
             // button3
             // 

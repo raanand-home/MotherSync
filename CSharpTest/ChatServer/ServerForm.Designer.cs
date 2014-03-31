@@ -42,6 +42,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Start Server";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -51,18 +52,16 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Close Server";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "Raanan",
-            "Mother",
-            "Adi"});
             this.listBox1.Location = new System.Drawing.Point(44, 41);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(128, 186);
             this.listBox1.TabIndex = 2;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
