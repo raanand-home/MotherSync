@@ -51,6 +51,7 @@ namespace ChatUnitTest
         public void getMessageFromQueue()
         {
             byte[] Buff = serverTcp.getFromQueue();
+            
             onDataReceivedEvent.Set();
 
             //  string temp = Buff.ToString();
