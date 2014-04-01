@@ -27,7 +27,7 @@ namespace ChatUnitTest
         }
 
         [TestMethod]
-        public void SendToServerTest()
+        public void SendToClientTest()
         {
             // Create Tcp Server
             // Listen To NewClient
