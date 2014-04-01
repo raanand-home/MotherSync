@@ -17,6 +17,7 @@ namespace ChatServer
     public partial class ServerForm : Form
     {
         ServerTcp serverTcp;
+        Socket connectSocket = null;
 
         public ServerForm()
         {
@@ -26,10 +27,14 @@ namespace ChatServer
         private void button1_Click(object sender, EventArgs e)
         {
             serverTcp = new ServerTcp();
-            Thread workerThread = new Thread(serverTcp.Start);
+            serverTcp.Start();
             serverTcp.OnMessageInQueue += new MessageInQueue(getMessageFromQueue);
+            serverTcp.OnConnect += new getConnectSocket(getConnectSocket);
+            /*
+            Thread workerThread = new Thread(serverTcp.Start);
 
-            workerThread.Start(sender);
+            workerThread.Start();
+             * */
             listBox1.Items.Add((string)"zzzzz");
             listBox1.Items.Add("aaaaa");
 //            StartListening();
@@ -38,8 +43,17 @@ namespace ChatServer
 
         public void getMessageFromQueue()
         {
-            TcpBuffer tcpBuff = serverTcp.getFromQueue();
-            listBox1.Items.Add(tcpBuff.buf);
+            byte[] Buff = serverTcp.getFromQueue();
+            Console.WriteLine(Buff.ToString());
+
+          //  string temp = Buff.ToString();
+        //    listBox1.Items.Add(Buff.ToString());
+        }
+        public void getConnectSocket(Socket socket)
+        {
+            connectSocket = socket;
+            //  string temp = Buff.ToString();
+            //    listBox1.Items.Add(Buff.ToString());
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -50,6 +64,14 @@ namespace ChatServer
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SendMessagebutton_Click(object sender, EventArgs e)
+        {
+            if (connectSocket != null)
+            {
+                serverTcp.Send(connectSocket, "send message <EOF>");
+            }
         }
     }
 }

@@ -80,8 +80,8 @@ namespace Chat_Client
                 Console.WriteLine("Response received : {0}", response);
 
                 // Release the socket.
-                client.Shutdown(SocketShutdown.Both);
-                client.Close();
+         //       client.Shutdown(SocketShutdown.Both);
+         //       client.Close();
             
             } catch (Exception e) {
                 Console.WriteLine(e.ToString());

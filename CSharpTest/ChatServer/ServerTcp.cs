@@ -13,31 +13,22 @@ using System.Collections.Generic;
 namespace ChatServer
 {
     delegate void MessageInQueue();
+    delegate void getConnectSocket(Socket socket);
 
-    class TcpBuffer
+    class ServerTcp  /// why after write public before class OnMessageInQueue is error ???
     {
-        public TcpBuffer(int bufSize, byte[] buffer)
-        {
-            byte[] buf = new byte[bufSize];
-            this.BufSize = bufSize;
-        }
+        public event MessageInQueue OnMessageInQueue;
+        public event getConnectSocket OnConnect;
+        public Queue<byte[]> readQueue = null;
+        private Thread workerThread;
+        private List<StateObject> socketConnectList;
 
-        public int BufSize { public get; private set; }
-        public byte[] buf { public get; private set;}
-    }
-
-    class ServerTcp
-    {
-        public static event MessageInQueue OnMessageInQueue;
-        public static Queue<TcpBuffer> readQueue = null;
-
-        public static ManualResetEvent allDone = new ManualResetEvent(false);
+        public ManualResetEvent allDone = new ManualResetEvent(false);
         Socket listener;
         
-        public static void writeToQueue(int bufSize, byte[] buffer)
+        public void writeToQueue(int bufSize, byte[] buffer)
         {
-            TcpBuffer tcpBuf = new TcpBuffer(bufSize, buffer);
-            readQueue.Enqueue(tcpBuf);
+            readQueue.Enqueue(buffer);
             var localOnMessageInQueue = OnMessageInQueue;
             if (OnMessageInQueue != null)
             {
@@ -46,7 +37,7 @@ namespace ChatServer
 
         }
 
-        public TcpBuffer getFromQueue()
+        public byte[] getFromQueue()
         {
             return readQueue.Dequeue();
         }
@@ -63,6 +54,7 @@ namespace ChatServer
             // Received data string.
             public StringBuilder sb = new StringBuilder();
         }
+
 
 
         public void StartListening()
@@ -97,7 +89,6 @@ namespace ChatServer
                     listener.BeginAccept(
                         new AsyncCallback(AcceptCallback),
                         listener);
-
                     // Wait until a connection is made before continuing.
                     allDone.WaitOne();
                 }
@@ -113,7 +104,7 @@ namespace ChatServer
 
         }
 
-        public static void AcceptCallback(IAsyncResult ar)
+        public void AcceptCallback(IAsyncResult ar)
         {
             // Signal the main thread to continue.
             allDone.Set();
@@ -125,11 +116,12 @@ namespace ChatServer
             // Create the state object.
             StateObject state = new StateObject();
             state.workSocket = handler;
+//            socketConnectList.Add(state);
             handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
                 new AsyncCallback(ReadCallback), state);
         }
 
-        public static void ReadCallback(IAsyncResult ar)
+        public void ReadCallback(IAsyncResult ar)
         {
             String content = String.Empty;
 
@@ -137,6 +129,11 @@ namespace ChatServer
             // from the asynchronous state object.
             StateObject state = (StateObject)ar.AsyncState;
             Socket handler = state.workSocket;
+            var localOnConnect = OnConnect;
+            if (OnConnect != null)
+            {
+                OnConnect(handler);
+            }
 
             // Read data from the client socket. 
             int bytesRead = handler.EndReceive(ar);
@@ -170,7 +167,7 @@ namespace ChatServer
             }
         }
 
-        private static void Send(Socket handler, String data)
+        public void Send(Socket handler, String data)
         {
             // Convert the string data to byte data using ASCII encoding.
             byte[] byteData = Encoding.ASCII.GetBytes(data);
@@ -179,7 +176,7 @@ namespace ChatServer
             handler.BeginSend(byteData, 0, byteData.Length, 0,
                 new AsyncCallback(SendCallback), handler);
         }
-        private static void SendCallback(IAsyncResult ar)
+        private void SendCallback(IAsyncResult ar)
         {
             try
             {
@@ -190,8 +187,9 @@ namespace ChatServer
                 int bytesSent = handler.EndSend(ar);
                 Console.WriteLine("Sent {0} bytes to client.", bytesSent);
 
-                handler.Shutdown(SocketShutdown.Both);
-                handler.Close();
+                // close socket
+          //      handler.Shutdown(SocketShutdown.Both);
+          //      handler.Close();
 
             }
             catch (Exception e)
@@ -200,25 +198,18 @@ namespace ChatServer
             }
         }
 
-        private bool _shouldStop;
-        public void Start(object sender)
+//        private bool _shouldStop;
+        public void Start()
         {
-            _shouldStop = false;
-            this.readQueue = new Queue<TcpBuffer>();
-            while (!_shouldStop)
-            {
-                Console.WriteLine("Start Listening");
-                StartListening();
-                Console.WriteLine("After Listening");
-                //                Console.GetLine();
+           workerThread = new Thread(StartListening);
 
-            }
-            Console.WriteLine("worker thread: terminating gracefully.");
+            workerThread.Start();
+            this.readQueue = new Queue<byte[]>();
         }
-        public bool Stop()
+        public void Stop()
         {
-            _shouldStop = true;
-            return true;
+            workerThread.Abort();
+
         }
     }
 }

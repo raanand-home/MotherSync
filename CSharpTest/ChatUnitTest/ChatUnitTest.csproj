@@ -53,6 +53,16 @@
     <Compile Include="TCPServerClientUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chat Client\Chat Client.csproj">
+      <Project>{ebb5c8db-6795-4917-9cb3-3c88ab9f452e}</Project>
+      <Name>Chat Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChatServer\ChatServer.csproj">
+      <Project>{ca5ef1bb-5524-4fce-9ca5-8f6dbbe27838}</Project>
+      <Name>ChatServer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

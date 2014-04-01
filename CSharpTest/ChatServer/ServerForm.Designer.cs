@@ -32,6 +32,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.SendMessagebutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -72,10 +73,21 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Current Participents";
             // 
+            // SendMessagebutton
+            // 
+            this.SendMessagebutton.Location = new System.Drawing.Point(199, 98);
+            this.SendMessagebutton.Name = "SendMessagebutton";
+            this.SendMessagebutton.Size = new System.Drawing.Size(75, 23);
+            this.SendMessagebutton.TabIndex = 4;
+            this.SendMessagebutton.Text = "Send Message";
+            this.SendMessagebutton.UseVisualStyleBackColor = true;
+            this.SendMessagebutton.Click += new System.EventHandler(this.SendMessagebutton_Click);
+            // 
             // ServerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.SendMessagebutton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button2);
@@ -93,6 +105,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SendMessagebutton;
     }
 }
 
