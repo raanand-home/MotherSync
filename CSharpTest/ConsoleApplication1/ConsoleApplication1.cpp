@@ -19,8 +19,7 @@ public:
 	T DoSome(T val)
 	{
 		val.DoSome();
-		return val;
-		
+		return val;	
 	}
 };
 

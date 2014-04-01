@@ -2,30 +2,56 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 using ChatServer;
+using Chat_Client;
 namespace ChatUnitTest
 {
     [TestClass]
     public class TCPServerClientUnitTest
     {
-        public ServerTcp serverTcp;
+        ServerTcp serverTcp;
+        ClientTcp clientTcp;
+        ManualResetEvent onDataReceivedEvent = new ManualResetEvent(false);
+        string text;
         [TestMethod]
         public void ListenTest()
         {
-            // Create Tcp Server
-//            serverTcp = new ServerTcp();
-//            Thread workerThread = new Thread(serverTcp.Start);
-            //serverTcp.OnMessageInQueue += new MessageInQueue(getMessageFromQueue);
-   //         serverTcp.AddEventHAndle(new MessageInQueue(getMessageFromQueue));
+            CreateServer();
+            CreateClient();
+            PrepareWaitForDataOnTheServer();
+            clientTcp.Send("AAA");
+            WaitForDataToReceived();
+        }
 
-//            workerThread.Start();
-            // Listen To New Client
-            // Close
+        private void WaitForDataToReceived()
+        {
+            if (!onDataReceivedEvent.WaitOne(Timeout.Infinite))
+            {
+                Assert.Fail("Data wasn't received");
+            }
+        }
+
+        private void CreateClient()
+        {
+            clientTcp = new ClientTcp();
+            clientTcp.Start();
+        }
+
+        private void PrepareWaitForDataOnTheServer()
+        {
+            onDataReceivedEvent.Reset();
+            serverTcp.OnMessageInQueue += new MessageInQueue(getMessageFromQueue);
+        }
+
+        private void CreateServer()
+        {
+            serverTcp = new ServerTcp();
+            serverTcp.Start();
         }
 
         public void getMessageFromQueue()
         {
             byte[] Buff = serverTcp.getFromQueue();
-            Console.WriteLine(Buff.ToString());
+            onDataReceivedEvent.Set();
 
             //  string temp = Buff.ToString();
             //    listBox1.Items.Add(Buff.ToString());
@@ -44,7 +70,7 @@ namespace ChatUnitTest
         }
 
         [TestMethod]
-        public void SendToServerTest()
+        public void SendToClientTest()
         {
             // Create Tcp Server
             // Listen To NewClient
