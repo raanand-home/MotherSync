@@ -6,7 +6,7 @@ namespace UnitTestProject1
     [TestClass]
     public class LambdaFunction
     {
-        class A
+        public class A
         {
             public int Id;
         }
