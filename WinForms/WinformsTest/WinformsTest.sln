@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformsTest", "WinformsTest.csproj", "{5D6740D4-6FF0-4FFC-8F65-823696404508}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rep", "..\Rep\Rep.csproj", "{DA660834-0107-4219-8343-502CEE973169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{B920A708-72CE-465C-8BB9-40A74B29B328}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D6740D4-6FF0-4FFC-8F65-823696404508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D6740D4-6FF0-4FFC-8F65-823696404508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D6740D4-6FF0-4FFC-8F65-823696404508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D6740D4-6FF0-4FFC-8F65-823696404508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA660834-0107-4219-8343-502CEE973169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA660834-0107-4219-8343-502CEE973169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA660834-0107-4219-8343-502CEE973169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA660834-0107-4219-8343-502CEE973169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B920A708-72CE-465C-8BB9-40A74B29B328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B920A708-72CE-465C-8BB9-40A74B29B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B920A708-72CE-465C-8BB9-40A74B29B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B920A708-72CE-465C-8BB9-40A74B29B328}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
