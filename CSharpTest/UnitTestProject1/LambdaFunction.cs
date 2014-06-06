@@ -13,8 +13,6 @@ namespace UnitTestProject1
         public delegate bool Pred(A a);
         class B
         {
-            
-            
             private Pred _checkFunction;
             
             public B(Pred checkFunc)
@@ -89,7 +87,19 @@ namespace UnitTestProject1
         {
             int a = 0;
             Action noParamter = () => a++;
+            noParamter();
             Assert.AreEqual(1, a);
+        }
+
+        int SumNumber(int x ,int y)
+        {
+            Func<int, int, int> sd =
+            (a, b) =>
+            {
+                Console.WriteLine(a + b);
+                return a + b;
+            };
+            return sd(x,y);
         }
     }
 }

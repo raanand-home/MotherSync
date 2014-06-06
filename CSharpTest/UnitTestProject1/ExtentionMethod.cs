@@ -59,8 +59,6 @@ namespace UnitTestProject1
         {
             string hello = "Hello ";
             var Longhello = hello.Repeat(58);
-
-
         }
 
     }

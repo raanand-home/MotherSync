@@ -59,6 +59,7 @@
     <Compile Include="ExceptionTesting.cs" />
     <Compile Include="LinqTest.cs" />
     <Compile Include="Mocking.cs" />
+    <Compile Include="Paralization\Paralization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionTest.cs" />
     <Compile Include="UnitOperatorTest.cs" />
